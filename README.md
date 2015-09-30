@@ -36,13 +36,13 @@ The Fast Modeling Event (FME) generator
 - the package is developed and tested on NERSC/PDSF
 - for safety reason, one had better to load the following modules when compile and exe the package on PDSF
 
-module load gcc/4.8.1
-module load cmake/2.8.12
+- module load gcc/4.8.1
+- module load cmake/2.8.12
 
-module use-apped /project/projectdirs/alice/software/modulefiles
-module use-apped /project/projectdirs/alice/xmzhang/modulefiles
+- module use-apped /project/projectdirs/alice/software/modulefiles
+- module use-apped /project/projectdirs/alice/xmzhang/modulefiles
 
-module load xmzhang/HepMC/2.06.09
-module load xmzhang/pythia/8.2.09
-module load xmzhang/jewel/2.0.2
-module load xmzhang/alisoft/vAN
+- module load xmzhang/HepMC/2.06.09
+- module load xmzhang/pythia/8.2.09
+- module load xmzhang/jewel/2.0.2
+- module load xmzhang/alisoft/vAN
