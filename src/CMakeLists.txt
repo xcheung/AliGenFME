@@ -20,9 +20,10 @@ cmake_minimum_required(VERSION 2.8.11)
 
 # indep. if root built with cmake assume the root-cint is in the path
 execute_process ( COMMAND root-config --prefix WORKING_DIRECTORY /tmp OUTPUT_VARIABLE ROOT_DIR OUTPUT_STRIP_TRAILING_WHITESPACE )
-message ("[info] ROOT_DIR: ${ROOT_DIR}")
-set( CMAKE_MODULE_PATH "${ROOT_DIR}/etc/root/cmake" )
-message ("[info] CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
+#message ("[info] ROOT_DIR: ${ROOT_DIR}")
+execute_process ( COMMAND root-config --etcdir WORKING_DIRECTORY /tmp OUTPUT_VARIABLE ROOT_ETCDIR OUTPUT_STRIP_TRAILING_WHITESPACE )
+set( CMAKE_MODULE_PATH "${ROOT_ETCDIR}/cmake" )
+#message ("[info] CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 find_package(ROOT REQUIRED)
 
 set(CMAKE_MACOSX_RPATH 1)
@@ -37,17 +38,18 @@ string(REPLACE ".cxx" ".h" HDRS "${SRCS}")
 # generate dictionaries
 set(DICT ${PROJECT_NAME}_Dict )
 list(APPEND DICTINC ${HDRS})
-set(LINKDEFS AliGenFastModelingEventLinkDefs.h )
-# if root not build with cmake this does not work
-#ROOT_GENERATE_DICTIONARY(${DICT} ${DICTINC} LINKDEF ${LINKDEFS})
+set(LINKDEFS AliGenFMELinkDef.h )
+# the dot below is needed for the ROOT_GENERATE_DICTIONARY
+include_directories(${ROOT_INCLUDE_DIR} ".")
+# if root not build with cmake the following does not work
+ROOT_GENERATE_DICTIONARY(${DICT} ${DICTINC} LINKDEF ${LINKDEFS})
 # workaround
-ADD_CUSTOM_COMMAND(
-    OUTPUT ${DICT}.cxx
-    COMMAND ${ROOTCINT_EXECUTABLE} -f ${DICT}.cxx -c ${HDRS} ${LINKDEFS}
-    DEPENDS ${HDRS} )
-message ("[info] ${DICT} ${ROOTCINT_EXECUTABLE}")
+#ADD_CUSTOM_COMMAND(
+#    OUTPUT ${DICT}.cxx
+#    COMMAND ${ROOTCINT_EXECUTABLE} -f ${DICT}.cxx -c ${HDRS} ${LINKDEFS}
+#    DEPENDS ${HDRS} )
+#message ("[info] ${DICT} ${ROOTCINT_EXECUTABLE}")
 
-include_directories(${ROOT_INCLUDE_DIR})
 link_libraries(${ROOT_LIBRARIES})
 add_library(AliGenFME SHARED ${SRCS} ${HDRS} ${DICT}.cxx)
 
