@@ -25,9 +25,11 @@ fTrkMultUserMin(-1.),
 fTrkMultUserMax(-1.),
 fCluMultUserMin(-1.),
 fCluMultUserMax(-1.),
+fTuneMult(1.0),
 fUseBoltzmann(kTRUE),
 fTrkMeanPt(0.7),
 fCluMeanPt(0.7),
+fTuneMeanPt(1.0),
 fCent(-1.),
 fCentBin(-1),
 fTrkMult(-1),
@@ -135,7 +137,7 @@ Bool_t AliGenFastModelingEvent::Init(const TString sPath)
   if (fUseBoltzmann) {
     cout << "AliGenFastModelingEvent::Init Sample trk/clu pT from Boltzmann" << endl;
     if (fTrkMeanPt<0.) { cout << "AliGenFastModelingEvent::Init trk mean pT = " << fTrkMeanPt << ", is incorrect" << endl; return kTRUE; }
-    if (fCluMeanPt<0.) { cout << "AliGenFastModelingEvent::Init clu mean pT = " << fTrkMeanPt << ", is incorrect" << endl; return kTRUE; }
+    if (fCluMeanPt<0.) { cout << "AliGenFastModelingEvent::Init clu mean pT = " << fCluMeanPt << ", is incorrect" << endl; return kTRUE; }
 
     fTrkPtBoltzmann = new TF1("fTrkPtBoltzmann", this, &AliGenFastModelingEvent::Boltzmann, 0.15, 200., 1, "AliGenFastModelingEvent", "Boltzmann");
     fTrkPtBoltzmann->SetParameter(0, fTrkMeanPt);
@@ -213,14 +215,16 @@ Bool_t AliGenFastModelingEvent::InitEvent()
   if (fUseMultUser) {
     fTrkMult = (Int_t)fRndm3->Uniform(fTrkMultUserMin, fTrkMultUserMax);
     fCluMult = (Int_t)fRndm3->Uniform(fCluMultUserMin, fCluMultUserMax);
+    fTrkMult = fTrkMult * fTuneMult;
+    fCluMult = fCluMult * fTuneMult;
   } else {
-    Double_t dMultTrk = fFxnCentMtChVal->Eval(fCent>90. ? 90 : fCent);
-    Double_t dMultRMS = fFxnCentMtChRMS->Eval(fCent>90. ? 90 : fCent);
+    Double_t dMultTrk = fFxnCentMtChVal->Eval(fCent>90. ? 90 : fCent) * fTuneMult;
+    Double_t dMultRMS = fFxnCentMtChRMS->Eval(fCent>90. ? 90 : fCent) * fTuneMult;
 
     fTrkMult = (Int_t)fRndm3->Gaus(dMultTrk, dMultRMS);
     fCluMult = (Int_t)fFxnMtChMtEmVal->Eval(fTrkMult<10. ? 10. : fTrkMult);
-  }
 
+  }
   return kTRUE;
 }
 
@@ -235,9 +239,9 @@ Bool_t AliGenFastModelingEvent::GetTrackPtEtaPhi(Double_t &dPt, Double_t &dEta, 
 //=============================================================================
 
   if (fUseBoltzmann) {
-    dPt = fTrkPtBoltzmann->GetRandom(0.15, 200.);
+    dPt = fTrkPtBoltzmann->GetRandom(0.15, 200.) * fTuneMeanPt;
   } else {
-    dPt = fHistTrkPt[fCentBin]->GetRandom();
+    dPt = fHistTrkPt[fCentBin]->GetRandom() * fTuneMeanPt;
   }
 //=============================================================================
 
@@ -265,9 +269,9 @@ Bool_t AliGenFastModelingEvent::GetClusterPtEtaPhi(Double_t &dPt, Double_t &dEta
 //=============================================================================
 
   if (fUseBoltzmann) {
-    dPt = fCluPtBoltzmann->GetRandom(0.30, 200.);
+    dPt = fCluPtBoltzmann->GetRandom(0.30, 200.) * fTuneMeanPt;
   } else {
-    dPt = fHistCluPt[fCentBin]->GetRandom();
+    dPt = fHistCluPt[fCentBin]->GetRandom() * fTuneMeanPt;
   }
 //=============================================================================
 

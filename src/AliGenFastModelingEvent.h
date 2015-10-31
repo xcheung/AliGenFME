@@ -49,6 +49,11 @@ class AliGenFastModelingEvent : public TNamed {
   Bool_t GetClusterPtEtaPhi(Double_t &dPt, Double_t &dEta, Double_t &dPhi);
 //=============================================================================
 
+  Double_t GetTuneMeanPt() const { return fTuneMeanPt; }
+  void     SetTuneMeanPt(Double_t v) {fTuneMeanPt = v;}
+  Double_t GetTuneMult() const { return fTuneMult; }
+  void     SetTuneMult(Double_t v) {fTuneMult = v;}
+
  private :
 
   AliGenFastModelingEvent(const AliGenFastModelingEvent &);
@@ -68,12 +73,16 @@ class AliGenFastModelingEvent : public TNamed {
 
   Double_t fCluMultUserMin;
   Double_t fCluMultUserMax;
+
+  Double_t fTuneMult;
 //=============================================================================
 
   Bool_t fUseBoltzmann;
 
   Double_t fTrkMeanPt;
   Double_t fCluMeanPt;
+
+  Double_t fTuneMeanPt;
 //=============================================================================
 
   Double_t fCent;
