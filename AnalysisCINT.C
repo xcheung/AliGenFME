@@ -100,53 +100,53 @@ Bool_t LoadLibraries()
   if (gSystem->Load("libGui")        <0) return kTRUE;
 //=============================================================================
 
-  if (gSystem->Load("libSTEERBase")         <0) return kTRUE;
-  if (gSystem->Load("libESD")               <0) return kTRUE;
-  if (gSystem->Load("libAOD")               <0) return kTRUE;
-  if (gSystem->Load("libANALYSIS")          <0) return kTRUE;
-  if (gSystem->Load("libOADB")              <0) return kTRUE;
-  if (gSystem->Load("libANALYSISalice")     <0) return kTRUE;
-  if (gSystem->Load("libCORRFW")            <0) return kTRUE;
+  if (gSystem->Load("libSTEERBase")    <0) return kTRUE;
+  if (gSystem->Load("libESD")          <0) return kTRUE;
+  if (gSystem->Load("libAOD")          <0) return kTRUE;
+  if (gSystem->Load("libANALYSIS")     <0) return kTRUE;
+  if (gSystem->Load("libOADB")         <0) return kTRUE;
+  if (gSystem->Load("libANALYSISalice")<0) return kTRUE;
+  if (gSystem->Load("libCORRFW")       <0) return kTRUE;
 
-  if (gSystem->Load("libCDB")               <0) return kTRUE;
-  if (gSystem->Load("libRAWDatabase")       <0) return kTRUE;
-  if (gSystem->Load("libRAWDatarec")        <0) return kTRUE;
-  if (gSystem->Load("libSTEER")             <0) return kTRUE;
-  if (gSystem->Load("libITSbase")           <0) return kTRUE;
-  if (gSystem->Load("libITSrec")            <0) return kTRUE;
-  if (gSystem->Load("libTPCbase")           <0) return kTRUE;
-  if (gSystem->Load("libTPCrec")            <0) return kTRUE;
-  if (gSystem->Load("libTRDbase")           <0) return kTRUE;
-  if (gSystem->Load("libTRDrec")            <0) return kTRUE;
-  if (gSystem->Load("libTOFbase")           <0) return kTRUE;
-//if (gSystem->Load("libTOFrec")            <0) return kTRUE;
-  if (gSystem->Load("libHMPIDbase")         <0) return kTRUE;
-  if (gSystem->Load("libEMCALraw")          <0) return kTRUE;
-  if (gSystem->Load("libEMCALbase")         <0) return kTRUE;
-  if (gSystem->Load("libEMCALrec")          <0) return kTRUE;
-  if (gSystem->Load("libVZERObase")         <0) return kTRUE;
-  if (gSystem->Load("libVZEROrec")          <0) return kTRUE;
-  if (gSystem->Load("libTender")            <0) return kTRUE;
-  if (gSystem->Load("libTenderSupplies")    <0) return kTRUE;
+  if (gSystem->Load("libCDB")           <0) return kTRUE;
+  if (gSystem->Load("libRAWDatabase")   <0) return kTRUE;
+  if (gSystem->Load("libRAWDatarec")    <0) return kTRUE;
+  if (gSystem->Load("libSTEER")         <0) return kTRUE;
+  if (gSystem->Load("libITSbase")       <0) return kTRUE;
+  if (gSystem->Load("libITSrec")        <0) return kTRUE;
+  if (gSystem->Load("libTPCbase")       <0) return kTRUE;
+  if (gSystem->Load("libTPCrec")        <0) return kTRUE;
+  if (gSystem->Load("libTRDbase")       <0) return kTRUE;
+  if (gSystem->Load("libTRDrec")        <0) return kTRUE;
+  if (gSystem->Load("libTOFbase")       <0) return kTRUE;
+//if (gSystem->Load("libTOFrec")        <0) return kTRUE;
+  if (gSystem->Load("libHMPIDbase")     <0) return kTRUE;
+  if (gSystem->Load("libEMCALraw")      <0) return kTRUE;
+  if (gSystem->Load("libEMCALbase")     <0) return kTRUE;
+  if (gSystem->Load("libEMCALrec")      <0) return kTRUE;
+  if (gSystem->Load("libVZERObase")     <0) return kTRUE;
+  if (gSystem->Load("libVZEROrec")      <0) return kTRUE;
+  if (gSystem->Load("libTender")        <0) return kTRUE;
+  if (gSystem->Load("libTenderSupplies")<0) return kTRUE;
 
-  if (gSystem->Load("libPWGTools")          <0) return kTRUE;
-//if (gSystem->Load("libPWGflowBase")       <0) return kTRUE;
-//if (gSystem->Load("libPWGflowTasks")      <0) return kTRUE;
-//if (gSystem->Load("libPWGHFbase")         <0) return kTRUE;
-//if (gSystem->Load("libPWGHFvertexingHF")  <0) return kTRUE;
+  if (gSystem->Load("libPWGTools")        <0) return kTRUE;
+//if (gSystem->Load("libPWGflowBase")     <0) return kTRUE;
+//if (gSystem->Load("libPWGflowTasks")    <0) return kTRUE;
+//if (gSystem->Load("libPWGHFbase")       <0) return kTRUE;
+//if (gSystem->Load("libPWGHFvertexingHF")<0) return kTRUE;
 
-  if (gSystem->Load("libSTAT")              <0) return kTRUE;
-  if (gSystem->Load("libEMCALUtils")        <0) return kTRUE;
-//if (gSystem->Load("libPHOSUtils")         <0) return kTRUE;
+  if (gSystem->Load("libSTAT")      <0) return kTRUE;
+  if (gSystem->Load("libEMCALUtils")<0) return kTRUE;
+//if (gSystem->Load("libPHOSUtils") <0) return kTRUE;
 
-  if (gSystem->Load("libCGAL")              <0) return kTRUE;
-  if (gSystem->Load("libfastjet")           <0) return kTRUE;
-//if (gSystem->Load("libSISConePlugin")     <0) return kTRUE;
-//if (gSystem->Load("libCDFConesPlugin")    <0) return kTRUE;
-  if (gSystem->Load("libsiscone")           <0) return kTRUE;
-  if (gSystem->Load("libsiscone_spherical") <0) return kTRUE;
-  if (gSystem->Load("libfastjetplugins")    <0) return kTRUE;
-  if (gSystem->Load("libfastjettools")      <0) return kTRUE;
+  if (gSystem->Load("libCGAL")                 <0) return kTRUE;
+  if (gSystem->Load("libfastjet")              <0) return kTRUE;
+//if (gSystem->Load("libSISConePlugin")        <0) return kTRUE;
+//if (gSystem->Load("libCDFConesPlugin")       <0) return kTRUE;
+  if (gSystem->Load("libsiscone")              <0) return kTRUE;
+  if (gSystem->Load("libsiscone_spherical")    <0) return kTRUE;
+  if (gSystem->Load("libfastjetplugins")       <0) return kTRUE;
+  if (gSystem->Load("libfastjettools")         <0) return kTRUE;
   if (gSystem->Load("libfastjetcontribfragile")<0) return kTRUE;
 
   if (gSystem->Load("libJETAN")             <0) return kTRUE;
@@ -161,7 +161,7 @@ Bool_t LoadLibraries()
   gSystem->AddIncludePath("-I$ALICE_PHYSICS/include");
 //=============================================================================
 
-  if (gROOT->LoadMacro("AliGenFastModelingEvent.cxx+")<0) return;
+  if (gROOT->LoadMacro("AliGenFastModelingEvent.cxx+")<0) return kTRUE;
 //=============================================================================
 
   return kFALSE;
