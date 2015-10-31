@@ -40,6 +40,11 @@ class AliGenFastModelingEvent : public TNamed {
   Int_t GetClusterMultiplicity() const { return fCluMult; }
 //=============================================================================
 
+  Double_t GetTrackMeanPt()   const { return fTrkMeanPt; }
+  Double_t GetClusterMeanPt() const { return fCluMeanPt; }
+  
+//=============================================================================
+
   Bool_t GetTrackPtEtaPhi (Double_t &dPt, Double_t &dEta, Double_t &dPhi);
   Bool_t GetClusterPtEtaPhi(Double_t &dPt, Double_t &dEta, Double_t &dPhi);
 //=============================================================================
